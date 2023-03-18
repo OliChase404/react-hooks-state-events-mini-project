@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
-function CategoryFilter() {
+function CategoryFilter({categories, selected, setSelected}) {
+
+  function handleClick(index){
+    setSelected(index)
+  }
+
+
+
+  const catBtns = categories.map((cat, index) => {
+    return (<button className={index === selected ? 'selected' : ''} onClick={() => handleClick(index)} key={cat}>{cat}</button>)
+  })
+
+ 
   return (
     <div className="categories">
       <h5>Category filters</h5>
-      {/* render <button> elements for each category here */}
+      {catBtns}
     </div>
   );
 }
